@@ -6,7 +6,8 @@ from tmdbv3api import Movie
 tmdb = TMDb()
 
 # Set your API key
-tmdb.api_key = "9bc6dfc9ec25c1f5e9d67691503c8889"
+file = open("api.text","r")
+tmdb.api_key = file
 movie = Movie()
 
 
@@ -22,16 +23,16 @@ print(movie.title)
 
 
 
-# # Determine whether the item is a movie or TV show
-# if movie["media_type"] == "movie":
-#     item_type = "movie"
-# elif movie["media_type"] == "tv":
-#     item_type = "tv_series"
-# else:
-#     raise ValueError("Item is not a movie or TV show")
+# Determine whether the item is a movie or TV show
+if movie["media_type"] == "movie":
+    item_type = "movie"
+elif movie["media_type"] == "tv":
+    item_type = "tv_series"
+else:
+    raise ValueError("Item is not a movie or TV show")
 
-# # Move the item to the appropriate folder based on its type
-# source_path = "/home/shubham/Downloads/numpy/Jellyfin_Organizer"
-# destination_path = f"/home/shubham/Downloads/{item_type}/folder"
-# filename = f"{movie['title']} ({movie['release_date'][:4]})"
-# os.rename(os.path.join(source_path, filename), os.path.join(destination_path, filename))
+# Move the item to the appropriate folder based on its type
+source_path = "/home/shubham/Downloads/numpy/Jellyfin_Organizer"
+destination_path = f"/home/shubham/Downloads/{item_type}/folder"
+filename = f"{movie['title']} ({movie['release_date'][:4]})"
+os.rename(os.path.join(source_path, filename), os.path.join(destination_path, filename))
