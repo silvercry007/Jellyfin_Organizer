@@ -6,8 +6,8 @@ from tmdbv3api import Movie
 tmdb = TMDb()
 
 # Set your API key
-file = open("api.text","r")
-tmdb.api_key = file
+with open("/path/to/file","r") as file:
+    tmdb.api_key = file.read().replace('\n', '')
 movie = Movie()
 
 
